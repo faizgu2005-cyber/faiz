@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glowstar Cafe. Kesempurnaan Seduhan.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --clean-white: #ffffff;
+      --text-black: #1d1d1f;
+      --light-grey: #f5f5f7;
+      --dark-grey: #424245;
+      --accent-gold: #c69c6d;
+      --font-main: "Inter", sans-serif;
+    }
+
+    body {
+      font-family: var(--font-main);
+      margin: 0;
+      padding: 0;
+      background-color: var(--clean-white);
+      color: var(--text-black);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 0;
+      position: fixed;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .nav-links {
+      display: flex;
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 40px;
+      color: var(--text-black);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-item {
+      position: relative;
+      margin: 0 20px;
+    }
+
+    .nav-item > a {
+      color: var(--text-black);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 14px;
+      padding: 5px 0;
+      display: block;
+      transition: opacity 0.3s;
+    }
+
+    .nav-item > a:hover {
+      opacity: 0.6;
+    }
+
+    /* Dropdown Styles */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--clean-white);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      min-width: 250px;
+      padding: 15px;
+      z-index: 1010;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateX(-50%) translateY(5px);
+      pointer-events: auto;
+    }
+
+    .dropdown-item {
+      display: block;
+      padding: 8px 10px;
+      text-decoration: none;
+      color: var(--text-black);
+      font-size: 14px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--light-grey);
+    }
+
+    .dropdown-heading {
+      font-weight: 600;
+      padding: 5px 10px 5px;
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-image: url("coffe.jpg"); /* Pastikan file gambar ada */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--clean-white);
+      padding-top: 60px;
+      position: relative;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 15px;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .cta-primary {
+      background-color: var(--clean-white);
+      color: var(--text-black);
+    }
+
+    .cta-primary:hover {
+      background-color: var(--light-grey);
+      transform: scale(1.05);
+    }
+
+    .cta-secondary {
+      color: var(--clean-white);
+      border: 2px solid var(--clean-white);
+      background-color: transparent;
+    }
+
+    .cta-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Common Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tagline {
+      color: var(--accent-gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* --- SIGNATURE SECTION --- */
+    .signature-section {
+      padding: 100px 20px;
+      background-color: var(--clean-white);
+    }
+
+    .sig-item {
+      display: flex;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto 100px;
+      gap: 60px;
+    }
+
+    .sig-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .sig-image-box {
+      flex: 1;
+      height: 450px;
+      background-color: #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .sig-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .sig-image-box:hover img {
+      transform: scale(1.05);
+    }
+
+    .sig-content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .sig-name {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .sig-desc {
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .sig-price {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--accent-gold);
+    }
+
+    /* --- ABOUT US SECTION (NEW) --- */
+    .about-section {
+      padding: 100px 20px;
+      background-color: var(--light-grey);
+      text-align: center;
+    }
+
+    .about-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      font-size: 20px;
+      color: var(--dark-grey);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .about-stats {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 50px;
+    }
+
+    .stat-item h4 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-black);
+    }
+
+    .stat-item p {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    /* --- LOCATION SECTION (NEW) --- */
+    .location-section {
+      background-color: var(--text-black);
+      color: var(--clean-white);
+      padding: 100px 20px;
+    }
+
+    .location-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .loc-info h2 {
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    .loc-details {
+      margin-bottom: 40px;
+    }
+
+    .loc-item {
+      margin-bottom: 25px;
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 20px;
+    }
+
+    .loc-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a8a8e;
+      margin-bottom: 5px;
+    }
+
+    .loc-value {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    /* Map Styling to look Grayscale/Cool */
+    .map-frame {
+      width: 100%;
+      height: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+      filter: grayscale(100%) invert(0%); /* Black and white map */
+      transition: filter 0.3s;
+    }
+
+    .map-frame:hover {
+      filter: grayscale(0%); /* Color on hover */
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* --- MENU OVERLAY --- */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--clean-white);
+      z-index: 2000;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      padding-top: 60px;
+    }
+
+    .menu-overlay.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .menu-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .menu-title {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .close-btn {
+      font-size: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-black);
+      transition: transform 0.3s;
+    }
+
+    .close-btn:hover {
+      transform: rotate(90deg);
+      opacity: 0.6;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .menu-category h3 {
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      color: #888;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      align-items: baseline;
+    }
+
+    .item-info { padding-right: 20px; }
+    .item-name { font-weight: 600; font-size: 18px; color: var(--text-black); }
+    .item-desc { font-size: 14px; color: #666; margin-top: 5px; }
+    .item-price { font-weight: 600; color: var(--text-black); white-space: nowrap; }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 14px;
+      background-color: #111;
+      color: #555;
+      border-top: 1px solid #222;
+    }
+
+    .footer-links a { color: #888; margin: 0 10px; text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 48px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .sig-item { flex-direction: column !important; gap: 30px; margin-bottom: 80px;}
+      .location-container { grid-template-columns: 1fr; }
+      .map-frame { height: 300px; }
+      .about-stats { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#" class="nav-logo">GLOWSTAR</a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a href="javascript:void(0)" onclick="openMenu()">Menu</a>
+        <div class="dropdown-menu">
+          <div class="dropdown-heading">Kopi</div>
+          <a href="#" class="dropdown-item">Kopi Klasik</a>
+          <a href="#" class="dropdown-item">Glowstar Signatures</a>
+          <div style="height: 1px; background-color: #eee; margin: 10px 0"></div>
+          <div class="dropdown-heading">Makanan</div>
+          <a href="#" class="dropdown-item">Artisan Pastry</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="#signature">Signature</a></div>
+      <div class="nav-item"><a href="#location">Lokasi</a></div>
+      <div class="nav-item"><a href="#about">Tentang Kami</a></div>
+    </div>
+  </div>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Glowstar.</h1>
+      <h1 class="hero-title">Kesempurnaan Seduhan.</h1>
+      <p class="hero-subtitle">
+        Kualitas di setiap tegukan. Pengalaman di setiap gigitan. Dirancang khusus untukmu.
+      </p>
+      <div>
+        <a href="javascript:void(0)" class="cta-button cta-primary" onclick="openMenu()">Lihat Menu</a>
+        <a href="#signature" class="cta-button cta-secondary">Menu Andalan</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="signature" class="signature-section">
+    <div class="section-header">
+      <div class="section-tagline">Hanya di Glowstar</div>
+      <h2 class="section-title">Menu Andalan Kami</h2>
+    </div>
+
+    <div class="sig-item">
+      <div class="sig-image-box">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1937&auto=format&fit=crop" alt="Glowstar Latte">
+      </div>
+      <div class="sig-content">
+        <h3 class="sig-name">Glowstar Golden Latte</h3>
+        <p class="sig-desc">
+          Perpaduan espresso arabika pilihan dengan susu oat kukus lembut, diinfusi dengan madu hutan alami dan taburan kayu manis aromatik.
+        </p>
+        <div class="sig-price">Rp 35.000</div>
+      </div>
+    </div>
+
+    <div class="sig-item">
+      <div class="sig-image-box">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1926&auto=format&fit=crop" alt="Croissant">
+      </div>
+      <div class="sig-content">
+        <h3 class="sig-name">Royal Almond Croissant</h3>
+        <p class="sig-desc">
+          Dipanggang segar setiap pagi. Mentega Prancis premium melapisi setiap lapisan renyah, diisi dengan pasta almond manis yang melimpah.
+        </p>
+        <div class="sig-price">Rp 28.000</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="section-tagline">Cerita Kami</div>
+      <h2 class="section-title" style="margin-bottom: 40px;">Lebih Dari Sekadar Kopi</h2>
+      <p class="about-text">
+        Dimulai dari sebuah mimpi kecil di tahun 2020, Glowstar hadir untuk mendefinisikan ulang makna kenyamanan. Kami percaya bahwa secangkir kopi bukan sekadar kafein, melainkan sebuah ritual untuk memulai hari, sebuah alasan untuk bertemu teman lama, dan sebuah ruang untuk menemukan inspirasi.
+        <br><br>
+        Kami bekerja sama langsung dengan petani lokal untuk memastikan setiap biji kopi dipetik dengan rasa hormat terhadap alam dan manusia.
+      </p>
+      
+      <div class="about-stats">
+        <div class="stat-item">
+          <h4>100%</h4>
+          <p>Biji Kopi Arabika</p>
+        </div>
+        <div class="stat-item">
+          <h4>5+</h4>
+          <p>Tahun Pengalaman</p>
+        </div>
+        <div class="stat-item">
+          <h4>25k</h4>
+          <p>Pelanggan Bahagia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="location-section">
+    <div class="location-container">
+      <div class="loc-info">
+        <div class="section-tagline">Kunjungi Kami</div>
+        <h2>Temukan Ruang Nyamanmu</h2>
+        <p style="color: #aaa; margin-bottom: 40px;">
+          Terletak di jantung kota, Glowstar adalah tempat pelarian yang sempurna dari hiruk pikuk kesibukan sehari-hari.
+        </p>
+        
+        <div class="loc-details">
+          <div class="loc-item">
+            <div class="loc-label">Alamat</div>
+            <div class="loc-value">Jl. Bunga Melati No. 88<br>Komplek Sentosa Indah, Kota Besar</div>
+          </div>
+          
+          <div class="loc-item">
+            <div class="loc-label">Jam Operasional</div>
+            <div class="loc-value">
+              Senin - Jumat: 07:00 - 22:00<br>
+              Sabtu - Minggu: 08:00 - 23:00
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-label">Kontak</div>
+            <div class="loc-value">hello@glowstar.id<br>+62 812-3456-7890</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3364958372656!2d106.81156731529555!3d-6.219280662645168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1505c6d321d%3A0x6a1660d3752358c2!2sSudirman%20Central%20Business%20District!5e0!3m2!1sen!2sid!4v1625561023561!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div id="fullMenu" class="menu-overlay">
+    <div class="menu-container">
+      <div class="menu-header">
+        <h2 class="menu-title">Menu Lengkap</h2>
+        <button class="close-btn" onclick="closeMenu()">&times;</button>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-category">
+          <h3>Kopi (Coffee)</h3>
+          <div class="menu-item-group">
+            <div class="menu-item">
+              <div class="item-info">
+                <div class="item-name">Glowstar Golden Latte</div>
+                <div class="item-desc">Espresso, susu oat, madu, kayu manis.</div>
+              </div>
+              <div class="item-price">Rp 35.000</div>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <div class="item-name">Classic Americano</div>
+                <div class="item-desc">Double shot espresso dengan air panas.</div>
+              </div>
+              <div class="item-price">Rp 22.000</div>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <div class="item-name">Aren Palm Sugar Latte</div>
+                <div class="item-desc">Kopi susu klasik dengan gula aren asli.</div>
+              </div>
+              <div class="item-price">Rp 25.000</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3>Pastry & Makanan Ringan</h3>
+          <div class="menu-item-group">
+            <div class="menu-item">
+              <div class="item-info">
+                <div class="item-name">Royal Almond Croissant</div>
+                <div class="item-desc">Pastry mentega dengan isian almond.</div>
+              </div>
+              <div class="item-price">Rp 28.000</div>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <div class="item-name">Pain au Chocolat</div>
+                <div class="item-desc">Pastry klasik dengan coklat batang Belgia.</div>
+              </div>
+              <div class="item-price">Rp 25.000</div>
+            </div>
+             <div class="menu-item">
+              <div class="item-info">
+                <div class="item-name">Truffle Mushroom Toast</div>
+                <div class="item-desc">Roti sourdough, jamur tumis, minyak truffle.</div>
+              </div>
+              <div class="item-price">Rp 45.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">WhatsApp</a>
+    </div>
+    <p style="margin-top: 15px;">© 2025 Glowstar Cafe. Hak Cipta Dilindungi.</p>
+  </footer>
+
+  <script>
+    function openMenu() {
+      const menu = document.getElementById('fullMenu');
+      menu.classList.add('active');
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('fullMenu');
+      menu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>
