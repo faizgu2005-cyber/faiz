@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glowstar Cafe. Kesempurnaan Seduhan.</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="glowstyle.css">
   <style>
     :root {
       --clean-white: #ffffff;
@@ -40,9 +41,7 @@
       border-bottom: 1px solid #e0e0e0;
     }
 
-    .nav-links {
-      display: flex;
-    }
+    
 
     .nav-logo {
       font-size: 18px;
@@ -489,27 +488,44 @@
     }
   </style>
 </head>
+<script src="script.js"></script>
 <body>
 
-  <div class="navbar">
-    <a href="#" class="nav-logo">GLOWSTAR</a>
-    <div class="nav-links">
-      <div class="nav-item">
-        <a href="javascript:void(0)" onclick="openMenu()">Menu</a>
-        <div class="dropdown-menu">
-          <div class="dropdown-heading">Kopi</div>
-          <a href="#" class="dropdown-item">Kopi Klasik</a>
-          <a href="#" class="dropdown-item">Glowstar Signatures</a>
-          <div style="height: 1px; background-color: #eee; margin: 10px 0"></div>
-          <div class="dropdown-heading">Makanan</div>
-          <a href="#" class="dropdown-item">Artisan Pastry</a>
-        </div>
-      </div>
-      <div class="nav-item"><a href="#signature">Signature</a></div>
-      <div class="nav-item"><a href="#location">Lokasi</a></div>
-      <div class="nav-item"><a href="#about">Tentang Kami</a></div>
+ <!-- Announcement Bar -->
+<div class="top-bar">
+    ☕ Selamat Datang di Glowstar Cafe | Nikmati Kopi Premium Setiap Hari
+</div>
+
+<header class="navbar">
+
+    <div class="nav-top">
+        <a href="#" class="logo">
+            GLOWSTAR
+        </a>
     </div>
-  </div>
+
+    <div class="nav-bottom">
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <nav id="navMenu">
+
+            <a href="javascript:void(0)" onclick="openMenu()">Menu</a>
+
+            <a href="#signature">Signature</a>
+
+            <a href="#location">Lokasi</a>
+
+            <a href="#about">Tentang Kami</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
 
   <section class="hero-section">
     <div class="hero-content">
@@ -696,6 +712,10 @@
   </footer>
 
   <script>
+    function toggleMobileMenu() {
+  const navLinks = document.getElementById('navLinks');
+  navLinks.classList.toggle('active');
+}
     function openMenu() {
       const menu = document.getElementById('fullMenu');
       menu.classList.add('active');
