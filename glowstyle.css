@@ -1,0 +1,35 @@
+/* ==========================================================================
+   Glowstar Cafe - Material Design 3 Stylesheet
+   File: glowstyle.css
+   ========================================================================== */
+
+/* --- 1. Material Design Typography & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  /* MD3 Color Palette (Warm Coffee Theme) */
+  --md-sys-color-primary: #8C5E35; /* Primary accent (Coffee Gold) */
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #FFDCC1;
+  --md-sys-color-on-primary-container: #2E1500;
+  
+  --md-sys-color-background: #FFFBFF;
+  --md-sys-color-on-background: #201A17;
+  
+  --md-sys-color-surface: #FFFBFF;
+  --md-sys-color-on-surface: #201A17;
+  --md-sys-color-surface-variant: #F0DFD3;
+  --md-sys-color-on-surface-variant: #50443A;
+  --md-sys-color-surface-container: #F7EFE9; /* Background for soft sections */
+  
+  --md-sys-color-inverse-surface: #352F2B;
+  --md-sys-color-inverse-on-surface: #F9EFE8;
+  
+  --md-sys-color-outline: #827468;
+
+  /* MD3 Elevations */
+  --md-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --md-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --md-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  --md-Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+  
